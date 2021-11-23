@@ -1,10 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { KanBannerDataService } from 'src/app/kan-banner-data.service';
-
-export class User{
-  name: string;
-  items: [string];
-}
 
 @Component({
   selector: 'app-root',
@@ -13,17 +7,9 @@ export class User{
 
 export class AppComponent implements OnInit {
 
-  constructor(private kanBannerDataService: KanBannerDataService) { }
+  constructor() { }
 
-  public user: User; 
+  ngOnInit(): void {
 
-  ngOnInit(): {
-    this.getUser();
-  }
-
-  private getUser(): void {
-    this.kanBannerDataService
-      .getUser('test') 
-        .then(foundUser=> this.user= foundUser);
   }
 }

@@ -1,0 +1,10 @@
+<div class="container-item-options"> 
+    <div class="item-options options" *ngIf="selected">
+        <div *ngFor="let option of options">{{option}}</div>
+    </div>
+    <div class="btn-options" *ngIf="!selected" (click)="setSelected()">
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+    </div>
+</div>

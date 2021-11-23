@@ -1,0 +1,35 @@
+@mixin items($size) {
+    .items {
+        @if $size == 'global' {
+            display: flex;
+            flex-flow: column nowrap;
+            justify-content: flex-start;
+            align-items: center;
+            app-item {
+                display: flex;
+                flex-flow: column nowrap;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+        @else if $size == 'small' {
+           width: 100%; 
+           app-item {
+               width: 100%;
+               margin: 0.25rem auto 0.25rem auto;
+            }
+        }
+        @else if $size == 'landscape' {
+
+        }
+        @else if $size == 'med' {
+            
+        }
+        @else if $size == 'large' {
+            
+        }
+        @else if $size == 'xLarge' {
+            
+        }
+    }
+}

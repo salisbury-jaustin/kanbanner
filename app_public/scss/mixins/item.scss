@@ -1,0 +1,23 @@
+@mixin item($size) {
+    .container-item {
+        @if $size == 'global' {
+
+        }
+        @else if $size == 'small' {
+            width: 90%;
+            padding: 0.1rem 0.1rem 0.1rem 0.1rem;
+        }
+        @else if $size == 'landscape' {
+
+        }
+        @else if $size == 'med' {
+            
+        }
+        @else if $size == 'large' {
+            
+        }
+        @else if $size == 'xLarge' {
+            
+        }
+    }
+}

@@ -1,0 +1,34 @@
+/* import generic mixins */
+@import './media_queries.scss';
+@import './variables.scss';
+
+/* import page sections style mixins */
+@import './mixins/html_body.scss';
+@import './mixins/classes.scss';
+@import './mixins/app_root.scss';
+@import './mixins/app.scss';
+@import './mixins/portal.scss';
+@import './mixins/credentials.scss';
+@import './mixins/list.scss';
+@import './mixins/items.scss';
+@import './mixins/item.scss';
+@import './mixins/container_item_options.scss';
+
+/* screen sizes */
+$sizes: 'global', 'small', 'landscape', 'med', 'large', 'xLarge';
+
+/* output */
+@each $size in $sizes {
+    @include screen($size) {
+        @include htmlBody($size);
+        @include classes($size);
+        @include appRoot($size);
+        @include app($size);
+        @include portal($size);
+        @include credentials($size);
+        @include list($size);
+        @include items($size);
+        @include item($size);
+        @include containerItemOptions($size);
+    }
+}

@@ -1,1 +1,308 @@
-/* You can add global styles to this file, and also import other style files */
+/* import generic mixins */
+/* import page sections style mixins */
+/* screen sizes */
+/* output */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  width: 100%;
+  margin: 0px;
+}
+
+body {
+  width: 100vw;
+  min-height: 100vh;
+  margin: 0px;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  background-color: #6D3CBC;
+}
+
+.container-single-col-start-start {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.container-single-col-start-center {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.container-pink {
+  background-color: #FEF6FF;
+  border-radius: 4px;
+}
+
+.container-white {
+  background-color: #ffffff;
+  border: solid #6D3CBC;
+  border-radius: 4px;
+  border-width: thin;
+}
+
+.options {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  width: min-content;
+  color: #6D3CBC;
+}
+
+.options > div {
+  width: min-content;
+  height: min-content;
+  white-space: nowrap;
+  padding: 0px 0.4rem;
+  cursor: pointer;
+}
+
+.options > div:not(:last-child) {
+  border-right: solid #6D3CBC;
+  border-width: thin;
+}
+
+.btn-options {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  cursor: pointer;
+}
+
+.circle {
+  background: #6D3CBC;
+  border-radius: 50%;
+}
+
+#btn-create-list {
+  background-color: #FEF6FF;
+  border-radius: 4px;
+  height: min-content;
+}
+
+.btn-submit {
+  color: green;
+  cursor: pointer;
+}
+
+.btn-cancel {
+  color: red;
+  cursor: pointer;
+}
+
+#app {
+  width: 100%;
+}
+#app header {
+  color: #ffffff;
+}
+#app #content {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+#component-portal {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#component-signin, #component-signup {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.list .container-list-options {
+  margin-left: auto;
+  margin-right: 0px;
+  width: min-content;
+}
+.list .container-add-item {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: min-content;
+}
+.list .add-item {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+.list .add-item input {
+  border: none;
+}
+.list .add-item input:focus {
+  outline: none;
+}
+.list .container-add-btns {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: auto;
+  margin-right: 0px;
+}
+
+.items {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+.items app-item {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.container-item-options {
+  width: min-content;
+}
+
+@media screen and (max-width: 767.9px) {
+  .circle {
+    width: 0.5rem;
+    height: 0.5rem;
+    margin-right: 1px;
+  }
+
+  #btn-create-list {
+    padding-top: 0.7rem;
+    padding-bottom: 0.7rem;
+    padding-left: 0.25rem;
+  }
+
+  app-root {
+    width: 95%;
+    min-height: 98vh;
+  }
+
+  #app header {
+    font-size: 2rem;
+  }
+
+  #component-portal {
+    margin: 1rem 0 0 0;
+    padding: 2rem 1rem 4rem 1rem;
+    height: 40rem;
+    width: 90vw;
+    font-size: 2.5rem;
+  }
+
+  #component-signin, #component-signup {
+    margin: 1rem 0 0 0;
+    padding: 2rem 1rem 4rem 1rem;
+    height: 40rem;
+    width: 90vw;
+    font-size: 2.5rem;
+  }
+
+  .list {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    padding: 0.25rem 0.25rem 0.25rem 0.25rem;
+  }
+  .list .container-list-options {
+    margin-top: 1rem;
+  }
+  .list .add-item {
+    width: 90%;
+    padding: 0.1rem 0.1rem 0.1rem 0.1rem;
+  }
+  .list .add-item input {
+    width: 85%;
+  }
+  .list .container-add-btns {
+    width: 15%;
+  }
+
+  .items {
+    width: 100%;
+  }
+  .items app-item {
+    width: 100%;
+    margin: 0.25rem auto 0.25rem auto;
+  }
+
+  .container-item {
+    width: 90%;
+    padding: 0.1rem 0.1rem 0.1rem 0.1rem;
+  }
+
+  .container-item-options {
+    margin-left: auto;
+    margin-right: 0px;
+  }
+}
+@media screen and (max-width: 767.9px) and (orientation: landscape) {
+  #component-portal {
+    margin: 1rem 0 0 0;
+    padding: 1.5rem 1rem 2rem 1rem;
+    height: 18rem;
+    width: 40vw;
+    font-size: 1.5rem;
+  }
+
+  #component-signin, #component-signup {
+    margin: 1rem 0 0 0;
+    padding: 1.5rem 1rem 2rem 1rem;
+    height: 18rem;
+    width: 40vw;
+    font-size: 1.5rem;
+  }
+}
+@media screen and (min-width: 768px) {
+  app-root {
+    width: 95%;
+    min-height: 98vh;
+  }
+
+  #app header {
+    font-size: 2rem;
+  }
+
+  #component-portal {
+    margin: 3rem 0 0 0;
+    padding: 2rem 1rem 4rem 1rem;
+    height: 35rem;
+    width: 50vw;
+    font-size: 2.4rem;
+  }
+
+  #component-signin, #component-signup {
+    margin: 3rem 0 0 0;
+    padding: 2rem 1rem 4rem 1rem;
+    height: 35rem;
+    width: 50vw;
+    font-size: 2.4rem;
+  }
+}
+@media screen and (min-width: 992px) {
+  #component-portal {
+    width: 40vw;
+  }
+
+  #component-signin, #component-signup {
+    width: 40vw;
+  }
+}
+
+/*# sourceMappingURL=styles.css.map */

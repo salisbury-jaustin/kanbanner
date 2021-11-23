@@ -1,0 +1,4 @@
+<div id="container-board" *ngFor="let user of users">
+    <app-list *ngFor="let list of user.lists" (eventAddItem)="addItem($event)" [list]=list></app-list>
+    <div id="btn-create-list">+ Add List</div>
+</div>

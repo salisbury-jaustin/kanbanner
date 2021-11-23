@@ -3,12 +3,15 @@ const router = express.Router();
 const ctrlUser = require('../controllers/user');
 
 router 
-    .route('/user/:user') 
+    .route('/user/:user/:password') 
     .get(ctrlUser.getUser); 
 router 
     .route('/user')
     .post(ctrlUser.createUser)
     .put(ctrlUser.editUser)
+router 
+    .route('/checkUser/:user')
+    .get(ctrlUser.checkUsername)
 router 
     .route('/list')
     .post(ctrlUser.createLists)

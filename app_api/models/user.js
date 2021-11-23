@@ -6,6 +6,7 @@ const listsSchema = new mongoose.Schema({
 })
 const userSchema = new mongoose.Schema({
     user: String,
+    password: String,
     lists: [listsSchema]
 })
 mongoose.model('User', userSchema, 'Users');

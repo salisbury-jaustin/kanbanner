@@ -1,0 +1,23 @@
+@mixin containerItemOptions($size) {
+    .container-item-options {
+        @if $size == 'global' {
+            width: min-content;
+        }
+        @else if $size == 'small' {
+            margin-left: auto;
+            margin-right: 0px;
+        }
+        @else if $size == 'landscape' {
+
+        }
+        @else if $size == 'med' {
+            
+        }
+        @else if $size == 'large' {
+            
+        }
+        @else if $size == 'xLarge' {
+            
+        }
+    }
+}

@@ -3,7 +3,8 @@ const User = mongoose.model('User');
 
 const createUser = (req, res) => {
     User.create({
-        user: req.body.user
+        user: req.body.user,
+        password: req.body.password
     },
     (err, user) => {
         if (err) {
@@ -19,7 +20,8 @@ const createUser = (req, res) => {
 }
 const getUser = (req, res) => { 
     User 
-        .find({user: req.params.user}) 
+        .find({user: req.params.user,
+            password: req.params.password}) 
         .exec((err, user) => {
             if (user.length) {
                 return res 
@@ -35,6 +37,31 @@ const getUser = (req, res) => {
                 .json({"message": "user not found"});
             }
         });
+};
+const checkUsername = (req, res) => {
+    User
+        .find({user: {$eq: req.params.user}})
+        .exec((err, user) => {
+            if (user.length) {
+                return res
+                    .status(200)
+                    .json({
+                        "userExists": true,
+                        "message": "That username already exists."
+                    })
+            } else if (err) {
+                return res  
+                    .status(404)
+                    .json(err)
+            } else {
+                return res  
+                    .status(200) 
+                    .json({
+                        "userExists": false,
+                        "message": ""
+                    })
+            }
+        })
 };
 const editUser = (req, res) => {
     User 
@@ -230,6 +257,7 @@ const moveItem = (req, res) => {
 module.exports = {
     createUser,
     getUser,
+    checkUsername,
     editUser,
     createLists,
     removeList,

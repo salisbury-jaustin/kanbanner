@@ -1,0 +1,40 @@
+$breakpoint-small-max: 767.9px; // max pixels for phones
+$breakpoint-med-min: 768px; // min pixels for tablets and laptops
+$breakpoint-med-max: 991.9px; // max pixels for tables and laptops
+$breakpoint-large-min: 992px; // min pixels for desktops
+$breakpoint-large-max: 1199.9px; // max pixels for desktops
+$breakpoint-xLarge-min: 1200px; // min pixels for xtra large displays
+
+@mixin screen($size) {
+    @if $size == 'global' {
+      @content;
+    }
+    @else if $size == 'small' {
+      @media screen and (max-width: $breakpoint-small-max) {
+          @content;
+      }
+    }
+    @else if $size == 'landscape' {
+      @media screen and (max-width: $breakpoint-small-max) and (orientation: landscape) {
+        @content;
+      }
+    }
+    @else if $size == 'med' {
+      @media screen and (min-width: $breakpoint-med-min) {
+          @content;
+      }
+    }
+    @else if $size == 'large' {
+      @media screen and (min-width: $breakpoint-large-min) {
+          @content;
+      }
+    }
+   @else if $size == 'xLarge' { 
+      @media screen and (min-width: $breakpoint-xLarge-min) {
+          @content;
+      }
+    }
+    @else {
+      @content;
+    }
+}
