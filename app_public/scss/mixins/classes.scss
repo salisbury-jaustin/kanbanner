@@ -12,6 +12,12 @@
             justify-content: flex-start;
             align-items: center;
         }
+        .container-single-row-between-center{
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: space-between;
+            align-items: center;
+        }
         .container-pink {
             background-color: map-get($colors, secondary);
             border-radius: 4px;
@@ -52,7 +58,7 @@
             background: map-get($colors, primary);
             border-radius: 50%;
         }
-        #btn-create-list {
+        .create-list {
             background-color: map-get($colors, secondary);
             border-radius: 4px;
             height: min-content;
@@ -72,17 +78,35 @@
            height: 0.5rem;
            margin-right: 1px;
         } 
-        #btn-create-list {
+        .create-list {
             padding-top: 0.7rem;
             padding-bottom: 0.7rem;
             padding-left: 0.25rem;
         }
     }
     @else if $size == 'landscape' {
-
+         .circle {
+           width: 0.5rem;
+           height: 0.5rem;
+           margin-right: 1px;
+        } 
+        .create-list {
+            padding-top: 0.7rem;
+            padding-bottom: 0.7rem;
+            padding-left: 0.25rem;
+        }
     }
     @else if $size == 'med' {
-        
+        .circle {
+           width: 0.5rem;
+           height: 0.5rem;
+           margin-right: 1px;
+        } 
+        .create-list {
+            padding-top: 0.7rem;
+            padding-bottom: 0.7rem;
+            padding-left: 0.25rem;
+        } 
     }
     @else if $size == 'large' {
         

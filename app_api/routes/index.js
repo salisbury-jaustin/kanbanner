@@ -13,7 +13,7 @@ router
     .route('/checkUser/:user')
     .get(ctrlUser.checkUsername)
 router 
-    .route('/list')
+    .route('/addList')
     .post(ctrlUser.createLists)
 router 
     .route('/removeList')

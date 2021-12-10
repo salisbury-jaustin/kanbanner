@@ -1,4 +1,14 @@
 <div id="container-board" *ngFor="let user of users">
-    <app-list *ngFor="let list of user.lists" (eventAddItem)="addItem($event)" [list]=list></app-list>
-    <div id="btn-create-list">+ Add List</div>
+    <app-list *ngFor="let list of user.lists" 
+        [list]=list
+        (eventAddItem)="addItem($event)">
+    </app-list>
+    <div class="create-list container-single-row-between-center" *ngIf="isAdding">
+        <input placeholder="New list..." [(ngModel)]="newList"/>
+        <div class="item-options options">
+            <div (click)="setIsAdding(false)">Cancel</div>
+            <div (click)="addList()">Add</div>
+        </div>
+    </div>
+    <div class="create-list" *ngIf="!isAdding" (click)="setIsAdding(true)">+ Add List</div>
 </div>

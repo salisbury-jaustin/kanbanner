@@ -1,6 +1,38 @@
 <div class="container-item container-white">
-    <div class="item">
+    <div class="item" *ngIf="!editState.edit&&!editState.move&&!editState.delete">
         {{item}}
     </div>
-    <app-item-options></app-item-options>
+    <div class="container-single-row-between-center"*ngIf="editState.edit">
+        <input [placeholder]="item" [(ngModel)]="itemEdit"/>
+        <div class="item-options options">
+            <div (click)="cancelEdit()">Cancel</div>
+            <div (click)="editItem()">Submit</div>
+        </div>
+    </div>
+    <div class="container-single-row-between-center" *ngIf="editState.move">
+        <div>
+            <label for="lists">Destination:</label>
+            <select name="lists" [(ngModel)]="destination">
+                <option *ngFor="let d of destinations" [ngValue]="d">{{d}}</option>
+            </select>
+        </div>
+        <div class="item-options options">
+            <div (click)="cancelEdit()">Cancel</div>
+            <div (click)="moveItem()">Move</div>
+        </div>
+    </div>
+    <div class="container-single-row-between-center" *ngIf="editState.delete">
+       <div>
+           Are you sure? 
+       </div> 
+       <div class="item-options options">
+            <div (click)="cancelEdit()">Cancel</div>
+            <div (click)="rmvItem(item)">Yes</div>
+        </div>
+    </div>
+    <app-item-options [optionsExpanded]="optionsExpanded"
+        [optionEnabled]="optionEnabled" 
+        (eventEditItem)="enableEdit($event)"
+        (eventOptionsExpanded)="setOptionsExpanded($event)">
+    </app-item-options>
 </div>

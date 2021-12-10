@@ -6,6 +6,8 @@ import { AuthService } from 'src/app/classes/authService';
 import { User } from 'src/app/classes/user';
 import { addItemPayload, addItemBody } from 'src/app/interfaces/addItem';
 import { Auth } from 'src/app/interfaces/auth';
+import { moveItemBody, moveItemPayload } from 'src/app/interfaces/moveItem';
+import { windowWhen } from 'rxjs/operators';
 
 @Component({
   selector: 'app-board',
@@ -15,12 +17,15 @@ import { Auth } from 'src/app/interfaces/auth';
 
 export class BoardComponent implements OnInit {
 
+  public users!: User[]; 
+  public newList: string = ""
+  public isAdding: Boolean = false;
+  private auth!: Auth;
+
   constructor(private kanBannerDataService: KanBannerDataService,
     private authService: AuthService,
     private router: Router) { }
 
-  public users!: User[]; 
-  private auth!: Auth;
   ngOnInit(): void {
     this.auth = this.authService.getAuth();
     if (this.auth.auth == false) {
@@ -31,14 +36,33 @@ export class BoardComponent implements OnInit {
     }
   }
 
+  public setIsAdding(val: Boolean): void {
+    this.isAdding = val;
+  }
+
+  public addList(): void {
+    let body: {} = {
+      user: this.auth.user[0].user,
+      lists: [
+        {
+          list: this.newList,
+          items: []
+        }
+      ]
+    }
+    this.kanBannerDataService 
+      .createLists(body);
+    window.location.reload();
+  }
+
   public addItem(payload: addItemPayload): void {
     let body: addItemBody = {
-      user: 'test',
+      user: this.auth.user[0].user,
       list: payload.list,
       item: payload.item 
-    }
-
+    };
     this.kanBannerDataService
-      .addItem(body) 
-  }
+      .addItem(body)
+    window.location.reload();
+  } 
 }

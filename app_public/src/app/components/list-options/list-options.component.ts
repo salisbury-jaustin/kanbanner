@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-list-options',
@@ -7,26 +7,24 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 })
 export class ListOptionsComponent implements OnInit {
   
-  constructor() { }
+  @Input() optionsExpanded: any;
+  @Input() optionEnabled: any
 
-  public options: string[] = ["Add", "Edit", "Move All", "Delete All"];
-  public selected: boolean = false;
-  public enabled: string = "";
+  public options: string[] = ["Cancel", "Add"];
 
   @Output() eventEditList = new EventEmitter<string>();
+  @Output() eventOptionsExpanded = new EventEmitter<Boolean>();
+
+  constructor() {}
 
   ngOnInit(): void {
   }
 
-  public setSelected(): void {
-    this.selected = true;
+  public isOptionsExpanded(): void {
+    this.eventOptionsExpanded.emit(true);
   }
-  private setEnabled(option: string): void {
-    this.enabled = option;
-  }
-  public editList(option: string) {
-    if (this.enabled == "") {
-      this.setEnabled(option);
+  public editList(option: string): void {
+    if (this.optionEnabled == "") {
       this.eventEditList.emit(option);
     }
   }

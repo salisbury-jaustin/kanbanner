@@ -193,7 +193,7 @@ const editItem = (req, res) => {
             "lists.$.items": req.body.prevItem
         },
         {
-            $set: {
+            $addToSet: {
                 "lists.$.items": req.body.newItem 
             }
         }, 
@@ -203,9 +203,29 @@ const editItem = (req, res) => {
                 .status(400)
                 .json(err);
             } else {
-              res
-                .status(201)
-                .json(list);
+                User 
+                .update(
+                    {
+                        user: req.body.user,
+                        "lists.list": req.body.list,
+                        "lists.$.items": req.body.prevItem
+                    },
+                    {
+                        $pull: {
+                            "lists.$.items": req.body.prevItem 
+                        }
+                    }, 
+                    (err, list) => {
+                        if (err) {
+                          res
+                            .status(400)
+                            .json(err);
+                        } else {
+                          res
+                            .status(201)
+                            .json(list);
+                        }
+                      });
             }
           });
 }
@@ -214,7 +234,7 @@ const moveItem = (req, res) => {
     .update(
         {
             user: req.body.user,
-            "lists.list": req.body.newList
+            "lists.list": req.body.destination
         },
         {
             $push: {

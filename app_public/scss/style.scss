@@ -9,6 +9,7 @@
 @import './mixins/app.scss';
 @import './mixins/portal.scss';
 @import './mixins/credentials.scss';
+@import './mixins//container_board.scss';
 @import './mixins/list.scss';
 @import './mixins/items.scss';
 @import './mixins/item.scss';
@@ -26,6 +27,7 @@ $sizes: 'global', 'small', 'landscape', 'med', 'large', 'xLarge';
         @include app($size);
         @include portal($size);
         @include credentials($size);
+        @include containerBoard($size);
         @include list($size);
         @include items($size);
         @include item($size);

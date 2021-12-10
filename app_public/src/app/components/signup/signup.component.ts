@@ -3,7 +3,8 @@ import { Router } from '@angular/router';
 import { KanBannerDataService } from 'src/app/kan-banner-data.service';
 import { AuthService } from 'src/app/classes/authService';
 import { Auth } from 'src/app/interfaces/auth';
-import { Credentials } from 'src/app/interfaces/credentials';
+import { User } from 'src/app/classes/user';
+import { Cookie } from 'src/app/classes/cookie';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -47,12 +48,22 @@ export class SignupComponent implements OnInit {
             this.error = true;
             this.errorMsg = res.error;
           } else {
+            let user: User[] = [
+            {
+              _id: res.id,
+              user: res.user,
+              password: res.password,
+              lists: res.lists
+            }
+          ]
             let authenticated: Auth = {
               auth: true,
-              user: res
+              user: user 
             }
             this.username = "";
             this.password = "";
+            let cookie = new Cookie(authenticated);
+            cookie.setCookie();
             this.authService.setAuth(authenticated);
             this.router.navigate(['/myboard']);
           }

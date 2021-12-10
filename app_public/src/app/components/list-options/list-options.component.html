@@ -1,11 +1,11 @@
 <div class="container-list-options"> 
-    <div class="list-options options" *ngIf="selected">
+    <div class="list-options options" *ngIf="optionsExpanded">
         <div *ngFor="let option of options"
             (click)="editList(option)">
                 {{option}}
         </div>
     </div>
-    <div class="btn-options" *ngIf="!selected" (click)="setSelected()">
+    <div class="btn-options" *ngIf="!optionsExpanded" (click)="isOptionsExpanded()">
         <div class="circle"></div>
         <div class="circle"></div>
         <div class="circle"></div>

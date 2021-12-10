@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-item-options',
@@ -6,16 +6,25 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./item-options.component.css']
 })
 export class ItemOptionsComponent implements OnInit {
+  @Input() optionsExpanded: any;
+  @Input() optionEnabled: any;
 
-  constructor() { }
+  public options: string[] = ["Cancel", "Move", "Edit", "Delete"];
 
-  public options: string[] = ["Move", "Edit", "Delete"];
-  public selected: boolean = false;
+  @Output() eventEditItem = new EventEmitter<string>();
+  @Output() eventOptionsExpanded = new EventEmitter<Boolean>();
+
+  constructor() {}
 
   ngOnInit(): void {
-  }
 
-  public setSelected(): void {
-    this.selected = true;
+  }
+  public isOptionsExpanded(): void {
+    this.eventOptionsExpanded.emit(true);
+  }
+  public editItem(option: string): void {
+    if (this.optionEnabled == "") {
+      this.eventEditItem.emit(option);
+    }
   }
 }

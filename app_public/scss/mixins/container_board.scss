@@ -1,0 +1,22 @@
+@mixin containerBoard($size) {
+    app-board {
+    @if $size == 'global' {
+        padding-bottom: 1rem;
+    }
+    @else if $size == 'small' {
+        width: 100%;        
+    }
+    @else if $size == 'landscape' {
+        width: 50%;
+    }
+    @else if $size == 'med' {
+       width: 60%; 
+    }
+    @else if $size == 'large' {
+        
+    }
+    @else if $size == 'xLarge' {
+       width: 30%; 
+    }
+}
+}

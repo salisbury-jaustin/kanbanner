@@ -3,8 +3,16 @@
         @if $size == 'global' {
             width: 100%;
             header {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            header .logo {
                color: map-get($colors, customwhite)
             } 
+            header .utility {
+                padding: 0.5rem 1rem;
+                cursor: pointer;
+            }
             #content {
                 display: flex;
                 flex-flow: column nowrap;
@@ -13,15 +21,20 @@
             }
         }
         @else if $size == 'small' {
-            header {
+            header .logo {
                 font-size: 2rem;
             }
         }
         @else if $size == 'landscape' {
-
+            header {
+                width: 50%;
+            }
         }
         @else if $size == 'med' {
             header {
+                width: 60%;
+            }
+            header .logo {
                 font-size: 2rem;
             }
         }
@@ -29,7 +42,9 @@
             
         }
         @else if $size == 'xLarge' {
-            
+           header {
+               width: 30%;
+           } 
         }
     }
 }

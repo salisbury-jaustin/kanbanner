@@ -6,6 +6,9 @@ import { map, catchError } from 'rxjs/operators';
 import { User } from './classes/user';
 import { Credentials } from './interfaces/credentials';
 import { addItemBody } from './interfaces/addItem';
+import { rmvItemBody } from './interfaces/rmvItem';
+import { editItemBody } from './interfaces/editItem';
+import { moveItemBody } from './interfaces/moveItem';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +18,7 @@ export class KanBannerDataService {
   constructor(private http: HttpClient) { }
 
   private apiBaseUrl: string = 'http://localhost:3000/api';
-  private header:{} = {'content-type': 'application/json'};
+  private header:{} = {'content-type': 'application/json; charset=utf-8'};
 
   public async getUser(username: string, password: string): Promise<any> {
     const url: string = `${this.apiBaseUrl}/user/${username}/${password}`;
@@ -63,11 +66,79 @@ export class KanBannerDataService {
       .toPromise();
     return response.userExists;
   }
-  public addItem(addItembody: addItemBody) {
-    const url: string = `${this.apiBaseUrl}/addItem`;
-    let obj: object = addItembody;
+  public createLists(createListsBody: {}) {
+    const url: string = `${this.apiBaseUrl}/addList`;
+    let obj: object = createListsBody;
     let body: string = JSON.stringify(obj);
     return this.http
-      .post(url, body, {'headers': this.header});
+      .post<any>(url, body, {'headers': this.header})
+        .subscribe({
+        next: data => {
+          console.log(data)
+        },
+        error: error => {
+            console.error('There was an error!', error);
+        }
+    });
+  }
+  public addItem(addItemBody: addItemBody) {
+    const url: string = `${this.apiBaseUrl}/addItem`;
+    let obj: object = addItemBody;
+    let body: string = JSON.stringify(obj);
+    return this.http
+      .post<any>(url, body, {'headers': this.header})
+        .subscribe({
+        next: data => {
+          console.log(data)
+        },
+        error: error => {
+            console.error('There was an error!', error);
+        }
+    });
+  }
+  public rmvItem(rmvItemBody: rmvItemBody) {
+    const url: string = `${this.apiBaseUrl}/removeItem`;
+    let obj: object = rmvItemBody;
+    let body: string = JSON.stringify(obj);
+    return this.http
+    .post<any>(url, body, {'headers': this.header})
+    .subscribe({
+      next: data => {
+        console.log(data)
+      },
+      error: error => {
+        console.error('There was an error!', error);
+      }
+    });
+  }
+  public editItem(editItemBody: editItemBody) {
+    const url: string = `${this.apiBaseUrl}/editItem`;
+    let obj: object = editItemBody;
+    let body: string = JSON.stringify(obj);
+    return this.http
+      .put(url, body, {'headers': this.header})
+      .subscribe({
+      next: data => {
+        console.log(data)
+      },
+      error: error => {
+        console.error('There was an error!', error);
+      }
+    });
+  }
+  public moveItem(moveItemBody: moveItemBody) {
+    const url: string = `${this.apiBaseUrl}/moveItem`;
+    let obj: object = moveItemBody;
+    let body: string = JSON.stringify(obj);
+    return this.http
+      .put(url, body, {'headers': this.header}) 
+      .subscribe({
+      next: data => {
+        console.log(data)
+      },
+      error: error => {
+        console.error('There was an error!', error);
+      }
+    });
   }
 }

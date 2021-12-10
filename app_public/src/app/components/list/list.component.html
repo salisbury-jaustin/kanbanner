@@ -1,16 +1,24 @@
 <div class="list container-pink">
     <div>{{list.list}} -</div>
     <div class="items">
-        <app-item *ngFor="let item of list.items" [item]=item></app-item>
+        <app-item *ngFor="let item of list.items" [item]=item
+            (eventEditItem)="editItem($event)"
+            (eventMoveItem)="moveItem($event)"
+            (eventRmvItem)="rmvItem($event)">
+        </app-item>
     </div>
     <div class="container-add-item"> 
         <div class="add-item container-white" *ngIf="editState.add">
             <input type="text" name="item" [(ngModel)]="itemAdded"/>
-            <div class="container-add-btns">
-                <div class="btn-submit" (click)="addItem()">O</div>
-                <div class="btn-cancel" (click)="cancelAddItem()">X</div>
+            <div class="item-options options">
+                <div (click)="cancelEdit()">Cancel</div>
+                <div (click)="addItem()">Add</div>
             </div>
         </div>
     </div>
-    <app-list-options (eventEditList)="enableEdit($event)"></app-list-options>
+    <app-list-options (eventEditList)="enableEdit($event)"
+        [optionsExpanded]="optionsExpanded"
+        [optionEnabled]="optionEnabled"
+        (eventOptionsExpanded)="setOptionsExpanded($event)">
+    </app-list-options>
 </div>

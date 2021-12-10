@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { KanBannerDataService } from 'src/app/kan-banner-data.service';
 import { AuthService } from 'src/app/classes/authService';
 import { Auth } from 'src/app/interfaces/auth';
-import { User } from 'src/app/classes/user';
+import { Cookie } from 'src/app/classes/cookie';
 
 @Component({
   selector: 'app-signin',
@@ -58,8 +58,10 @@ export class SigninComponent implements OnInit {
         } else {
           let authenticated: Auth = {
             auth: true,
-            user: res
+            user: res 
           }
+          let cookie = new Cookie(authenticated);
+          cookie.setCookie();
           this.authService.setAuth(authenticated);
           this.router.navigate(['/myboard']);
         }

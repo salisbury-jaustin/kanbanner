@@ -36,6 +36,13 @@ body {
   align-items: center;
 }
 
+.container-single-row-between-center {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .container-pink {
   background-color: #FEF6FF;
   border-radius: 4px;
@@ -83,7 +90,7 @@ body {
   border-radius: 50%;
 }
 
-#btn-create-list {
+.create-list {
   background-color: #FEF6FF;
   border-radius: 4px;
   height: min-content;
@@ -103,7 +110,15 @@ body {
   width: 100%;
 }
 #app header {
+  margin-left: auto;
+  margin-right: auto;
+}
+#app header .logo {
   color: #ffffff;
+}
+#app header .utility {
+  padding: 0.5rem 1rem;
+  cursor: pointer;
 }
 #app #content {
   display: flex;
@@ -124,6 +139,10 @@ body {
   flex-flow: column nowrap;
   justify-content: space-between;
   align-items: center;
+}
+
+app-board {
+  padding-bottom: 1rem;
 }
 
 .list .container-list-options {
@@ -184,7 +203,7 @@ body {
     margin-right: 1px;
   }
 
-  #btn-create-list {
+  .create-list {
     padding-top: 0.7rem;
     padding-bottom: 0.7rem;
     padding-left: 0.25rem;
@@ -195,7 +214,7 @@ body {
     min-height: 98vh;
   }
 
-  #app header {
+  #app header .logo {
     font-size: 2rem;
   }
 
@@ -213,6 +232,10 @@ body {
     height: 40rem;
     width: 90vw;
     font-size: 2.5rem;
+  }
+
+  app-board {
+    width: 100%;
   }
 
   .list {
@@ -253,6 +276,22 @@ body {
   }
 }
 @media screen and (max-width: 767.9px) and (orientation: landscape) {
+  .circle {
+    width: 0.5rem;
+    height: 0.5rem;
+    margin-right: 1px;
+  }
+
+  .create-list {
+    padding-top: 0.7rem;
+    padding-bottom: 0.7rem;
+    padding-left: 0.25rem;
+  }
+
+  #app header {
+    width: 50%;
+  }
+
   #component-portal {
     margin: 1rem 0 0 0;
     padding: 1.5rem 1rem 2rem 1rem;
@@ -268,14 +307,70 @@ body {
     width: 40vw;
     font-size: 1.5rem;
   }
+
+  app-board {
+    width: 50%;
+  }
+
+  .list {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    padding: 0.25rem 0.25rem 0.25rem 0.25rem;
+  }
+  .list .container-list-options {
+    margin-top: 1rem;
+  }
+  .list .add-item {
+    width: 90%;
+    padding: 0.1rem 0.1rem 0.1rem 0.1rem;
+  }
+  .list .add-item input {
+    width: 85%;
+  }
+  .list .container-add-btns {
+    width: 15%;
+  }
+
+  .items {
+    width: 100%;
+  }
+  .items app-item {
+    width: 100%;
+    margin: 0.25rem auto 0.25rem auto;
+  }
+
+  .container-item {
+    width: 90%;
+    padding: 0.1rem 0.1rem 0.1rem 0.1rem;
+  }
+
+  .container-item-options {
+    margin-left: auto;
+    margin-right: 0px;
+  }
 }
 @media screen and (min-width: 768px) {
+  .circle {
+    width: 0.5rem;
+    height: 0.5rem;
+    margin-right: 1px;
+  }
+
+  .create-list {
+    padding-top: 0.7rem;
+    padding-bottom: 0.7rem;
+    padding-left: 0.25rem;
+  }
+
   app-root {
     width: 95%;
     min-height: 98vh;
   }
 
   #app header {
+    width: 60%;
+  }
+  #app header .logo {
     font-size: 2rem;
   }
 
@@ -294,6 +389,47 @@ body {
     width: 50vw;
     font-size: 2.4rem;
   }
+
+  app-board {
+    width: 60%;
+  }
+
+  .list {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    padding: 0.25rem 0.25rem 0.25rem 0.25rem;
+  }
+  .list .container-list-options {
+    margin-top: 1rem;
+  }
+  .list .add-item {
+    width: 90%;
+    padding: 0.1rem 0.1rem 0.1rem 0.1rem;
+  }
+  .list .add-item input {
+    width: 85%;
+  }
+  .list .container-add-btns {
+    width: 15%;
+  }
+
+  .items {
+    width: 100%;
+  }
+  .items app-item {
+    width: 100%;
+    margin: 0.25rem auto 0.25rem auto;
+  }
+
+  .container-item {
+    width: 90%;
+    padding: 0.1rem 0.1rem 0.1rem 0.1rem;
+  }
+
+  .container-item-options {
+    margin-left: auto;
+    margin-right: 0px;
+  }
 }
 @media screen and (min-width: 992px) {
   #component-portal {
@@ -302,6 +438,15 @@ body {
 
   #component-signin, #component-signup {
     width: 40vw;
+  }
+}
+@media screen and (min-width: 1200px) {
+  #app header {
+    width: 30%;
+  }
+
+  app-board {
+    width: 30%;
   }
 }
 
